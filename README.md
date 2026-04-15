@@ -6,6 +6,7 @@
 > PathFinder maps attack paths. PathGuard hardens defenses. NetworkMapper powers both.
 
 ⚠️ AUTHORIZED SECURITY TESTING ONLY ⚠️ 
+
 PathFinder is designed for use against networks you own or have explicit permission to test. Unauthorized use is illegal.
 
 
