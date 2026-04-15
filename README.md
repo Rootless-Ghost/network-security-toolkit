@@ -1,8 +1,12 @@
+<div align="center">
+
 # Network Security Toolkit: PathFinder & PathGuard
 
 A comprehensive network security toolkit with complementary red team (PathFinder) and blue team (PathGuard) components that share a common core library (NetworkMapper).
 
 ## Overview
+
+</div>
 
 This toolkit provides a unified approach to network security assessment by combining offensive and defensive perspectives:
 
