@@ -16,50 +16,104 @@ PathFinder is designed for use against networks you own or have explicit permiss
 
 This toolkit provides a unified approach to network security assessment by combining offensive and defensive perspectives:
 
-- **NetworkMapper**: Core shared library for network discovery, mapping, and visualization
-- **PathFinder**: Red team tool for attack path analysis and vulnerability assessment
-- **PathGuard**: Blue team tool for defensive security analysis and hardening recommendations
+## Components
+
+| Component | Role | Description |
+|-----------|------|-------------|
+| `NetworkMapper` | Core library | Network discovery, topology mapping, path analysis, visualization |
+| `PathFinder` | Red team | Attack path analysis, lateral movement detection, Shodan integration |
+| `PathGuard` | Blue team | Defensive analysis, hardening recommendations, baseline change detection |
 
 The yin-yang design philosophy enables security professionals to use the same codebase for both offensive security testing and defensive security improvements.
 
 ## Features
 
-### Core Components (NetworkMapper)
+### NetworkMapper (Shared Core)
 - Network topology discovery and mapping
 - Host and service enumeration
 - Path analysis between network nodes
-- Standardized data structures for network information
-- Network visualization with interactive graphs
+- Standardized data structures with full JSON serialization
+- Interactive HTML and dark-theme PNG visualization
 
-### Red Team Tool (PathFinder)
-- Attack path mapping and analysis
+### PathFinder (Red Team)
+- Attack path mapping with CVSS-weighted graph traversal
 - Shodan API integration for external attack surface discovery
-- Vulnerable service identification
-- Privilege escalation and lateral movement path detection
-- Data exfiltration route identification
-- Stealth scanning capabilities
+- 15 vulnerability signatures across common services
+- MITRE ATT&CK lateral movement technique mapping (T1021.001–T1563)
+- Exfiltration channel identification with stealth scoring
+- Stealth scanning with jitter, decoys, and randomized host ordering
 - Attack visualization with criticality scoring
 
-### Blue Team Tool (PathGuard)
-- Defensive network analysis
-- Security choke point identification
-- Security hardening recommendations
-- Network change detection through baseline comparison
-- Vulnerability prioritization based on attack paths
-- Security control placement suggestions
-- Remediation recommendations with priority scoring
+### PathGuard (Blue Team)
+- Choke point analysis using betweenness, degree, and closeness centrality
+- 13 hardening rules mapped to CIS Controls and NIST SP 800-53
+- Baseline manager with CRITICAL/WARN/INFO change detection
+- Vulnerability prioritization: CVSS × network position weighting
+- 10 security control deployment guides (NGFW, IDS, WAF, PAM, EDR, SIEM, MFA, and more)
+- Prioritized remediation roadmap generation
 
 ## Installation
 
 ### Using Poetry (recommended)
 
 ```bash
-# Clone the repository
 git clone https://github.com/Rootless-Ghost/network-security-toolkit.git
 cd network-security-toolkit
 
-# Install dependencies with Poetry
+# Install with Poetry (recommended)
 poetry install
-
-# Activate the virtual environment
 poetry shell
+```
+---
+
+## Usage
+
+```bash
+# Discover and map a network
+network-mapper discover 192.168.1.0/24 -s -o topo.json --html map.html
+
+# Red team analysis (requires authorization confirmation)
+pathfinder scan 192.168.1.0/24 --stealth -o topo.json
+pathfinder analyze topo.json --html attack.html --report pf-report.json
+
+# Blue team analysis
+pathguard analyze topo.json --report pg-report.json
+pathguard baseline --topology topo.json --save --name baseline-2026-04-15
+pathguard remediate topo.json --report roadmap.json
+```
+
+## Requirements
+
+- Python 3.x
+- Poetry
+- Nmap
+- Optional: Shodan API key (PathFinder external recon)
+
+---
+
+## Project Structure
+
+network-security-toolkit/
+├── pyproject.toml          ← Poetry config, 3 CLI entry points
+├── network_mapper/         ← Core shared library (6 modules)
+├── pathfinder/             ← Red team tool (9 modules)
+└── pathguard/              ← Blue team tool (8 modules)
+
+---
+
+## Requirements
+
+- Python 3.x
+- Poetry
+- Nmap
+- Optional: Shodan API key (PathFinder external recon)
+
+---
+
+## License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+`Python` `Red Team` `Blue Team` `Network Security` `MITRE ATT&CK` `Shodan` `CIS Controls` `NIST 800-53`
+
+**Built by [Rootless-Ghost](https://github.com/Rootless-Ghost)**
