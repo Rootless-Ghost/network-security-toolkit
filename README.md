@@ -1,6 +1,6 @@
 <div align="center">
 
-# network-security-toolkit
+# Network-Security-Toolkit
 
 ### Unified Red/Blue Team Network Security Toolkit
 
