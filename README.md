@@ -107,15 +107,6 @@ network-security-toolkit/
 
 ---
 
-## Requirements
-
-- Python 3.x
-- Poetry
-- Nmap
-- Optional: Shodan API key (PathFinder external recon)
-
----
-
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
