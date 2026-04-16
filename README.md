@@ -120,6 +120,8 @@ network-security-toolkit/
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
-`Python` `Red Team` `Blue Team` `Network Security` `MITRE ATT&CK` `Shodan` `CIS Controls` `NIST 800-53`
+<div align="center">
 
-**Built by [Rootless-Ghost](https://github.com/Rootless-Ghost)**
+**Built by [Rootless-Ghost](https://github.com/Rootless-Ghost)** 
+
+</div>
